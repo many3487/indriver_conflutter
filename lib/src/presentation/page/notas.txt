@@ -1,0 +1,1 @@
+cada page hace referencia a una nueva pantalla 

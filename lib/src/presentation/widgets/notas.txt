@@ -1,0 +1,1 @@
+dentro de flutter los wiggets son elementos como texfields imagenes 
