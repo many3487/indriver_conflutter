@@ -14,16 +14,26 @@ class DefaulttextfieldOutlined extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 40,
       margin: margin,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color.fromRGBO(255, 255, 255, 0.5),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
       child: TextFormField(
         decoration: InputDecoration(
             label: Text(text),
-            border: InputBorder.none,
+            // border: InputBorder.none,
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Color.fromARGB(255, 35, 161, 183),
+                    width:
+                        1)), //este se usa cuando el usuario selecciona el campo
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+              color: Color.fromARGB(255, 34, 101, 202),
+              width: 1,
+            )), //esta es la linea que se muestra de este color
             prefixIcon: Container(
               margin: EdgeInsets.only(top: 10),
               child: Wrap(

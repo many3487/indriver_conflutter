@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:indriver_clone_flutter/src/presentation/widgets/DefaultButtom.dart';
-import 'package:indriver_clone_flutter/src/presentation/widgets/DefaultTextField.dart';
+import 'package:indriver_clone_flutter/src/presentation/widgets/DefaulttextfieldOutlined.dart';
 
 //stle
 //este funciona para la creación de la páguna es decir para el contenido que va inmerso en la página o pantalla
@@ -52,40 +52,48 @@ class RegisterContent extends StatelessWidget {
                     const Color.fromARGB(255, 255, 255, 255),
                     const Color.fromARGB(255, 154, 154, 154)
                   ])),
-          child: Column(
+          child: Stack(
             children: [
-              _imageBanner(),
-              Defaulttextfield(
-                  text: "Nombre",
-                  icon: Icons.person_outline,
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 10)),
-              Defaulttextfield(
-                text: "Apellido",
-                icon: Icons.person,
-                margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+              _imageBackground(context),
+              SingleChildScrollView(
+                //este es un widget se envuelve un widget el cual  se debe cambiar a esta propiedad para que no salga el error
+                child: Column(
+                  children: [
+                    _imageBanner(),
+                    DefaulttextfieldOutlined(
+                        text: "Nombre",
+                        icon: Icons.person_outline,
+                        margin: EdgeInsets.only(left: 20, right: 20, top: 10)),
+                    DefaulttextfieldOutlined(
+                      text: "Apellido",
+                      icon: Icons.person,
+                      margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    ),
+                    DefaulttextfieldOutlined(
+                      text: "Email",
+                      icon: Icons.email_outlined,
+                      margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    ),
+                    DefaulttextfieldOutlined(
+                      text: "Número",
+                      icon: Icons.phone_android_sharp,
+                      margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    ),
+                    DefaulttextfieldOutlined(
+                      text: "Password",
+                      icon: Icons.key_sharp,
+                      margin: EdgeInsets.only(
+                          left: 20, right: 20, top: 10, bottom: 10),
+                    ),
+                    DefaultButtom(text: "Crear usuario"),
+                    _separatorOr(),
+                    _textIAlreadyHaveAccount(context)
+                  ],
+                ),
               ),
-              Defaulttextfield(
-                text: "Email",
-                icon: Icons.email_outlined,
-                margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-              ),
-              Defaulttextfield(
-                text: "Número",
-                icon: Icons.phone_android_sharp,
-                margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-              ),
-              Defaulttextfield(
-                text: "Password",
-                icon: Icons.key_sharp,
-                margin:
-                    EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-              ),
-              DefaultButtom(text: "Crear usuario"),
-              _separatorOr(),
-              _textIAlreadyHaveAccount(context)
             ],
           ),
-        )
+        ),
       ],
     ); //el Stack sirve para poner objetos uno encima del otro
   }
@@ -138,12 +146,25 @@ class RegisterContent extends StatelessWidget {
     );
   }
 
+  Widget _imageBackground(BuildContext context) {
+    return Container(
+      alignment: Alignment.bottomCenter, //centrar un elemento
+      margin: EdgeInsets.only(bottom: 50),
+      child: Image.asset(
+        'assets/img/destination.png',
+        width: MediaQuery.of(context).size.width * 0.6,
+        height: MediaQuery.of(context).size.height * 0.4,
+        opacity: AlwaysStoppedAnimation(0.1),
+      ),
+    );
+  }
+
   Widget _imageBanner() {
     return Container(
       margin: EdgeInsets.only(top: 30),
       alignment: Alignment.center,
       child: Image.asset(
-        'assets/img/delivery.png',
+        'assets/img/trip.png',
         width: 150,
         height: 150,
       ),

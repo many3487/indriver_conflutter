@@ -36,6 +36,7 @@ class LoginContent extends StatelessWidget {
           ),
         ),
         Container(
+          height: MediaQuery.of(context).size.height,
           // height: MediaQuery.of(context).size.height * 0.93,
           // width: MediaQuery.of(context).size.width * 0.8,
           margin: EdgeInsets.only(left: 60, bottom: 30),
@@ -53,32 +54,40 @@ class LoginContent extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(
                 top: 0, bottom: 0, left: 15, right: 15), //margen
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment
-                  .start, //ubica los elementos en la parte izquierda
-              children: [
-                SizedBox(
-                  height: 30,
-                ),
-                _textWelcome("Welcome"),
-                _textWelcome("Back..."),
-                _imageCar(),
-                _textLogin(),
-                Defaulttextfield(text: "Email", icon: Icons.email),
-                Defaulttextfield(
-                    text: "Password",
-                    icon: Icons.lock,
-                    margin:
-                        EdgeInsets.only(top: 0, left: 20, right: 0, bottom: 0)),
-                Spacer(), //lleva todo a la parte de abajo
-                DefaultButtom(text: "SING IN", textColor: Colors.cyan),
-                _sepadatorOr(),
-                SizedBox(height: 10),
-                _textDontHaveAccount(context),
-                SizedBox(
-                  height: 5,
-                )
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment
+                    .start, //ubica los elementos en la parte izquierda
+                children: [
+                  SizedBox(
+                    height: 30,
+                  ),
+                  _textWelcome("Welcome"),
+                  _textWelcome("Back..."),
+                  _imageCar(),
+                  _textLogin(),
+                  Defaulttextfield(text: "Email", icon: Icons.email),
+                  Defaulttextfield(
+                      text: "Password",
+                      icon: Icons.lock,
+                      margin: EdgeInsets.only(
+                          top: 0, left: 20, right: 0, bottom: 0)),
+                  // Spacer(), //lleva todo a la parte de abajo// nunca usar un Spacer su se va a usar un SingleChildScrollView ya qeu sse genera un bucle infinito
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  DefaultButtom(
+                    text: "SING IN",
+                    textColor: Colors.cyan,
+                  ),
+                  _sepadatorOr(),
+                  SizedBox(height: 10),
+                  _textDontHaveAccount(context),
+                  SizedBox(
+                    height: 5,
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -98,7 +107,7 @@ class LoginContent extends StatelessWidget {
     return Container(
       alignment: Alignment.centerRight,
       child: Image.asset(
-        'assets/img/car.png',
+        'assets/img/car_white.png',
         width: 150,
         height: 150,
       ),
