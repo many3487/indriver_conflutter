@@ -16,20 +16,29 @@ class Defaulttextfield extends StatelessWidget {
     return Container(
       height: 40,
       margin: margin,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
+      decoration: BoxDecoration(//este es el input
+          // color: Colors.white,
+          // borderRadius: BorderRadius.only(
+          //     topLeft: Radius.circular(15), bottomRight: Radius.circular(15))
+          ),
       child: TextFormField(
         decoration: InputDecoration(
-            label: Text(text),
-            border: InputBorder.none,
+            label: Text(
+              text,
+              style: TextStyle(color: Colors.white),
+            ),
+            // border: InputBorder.none,//quitar el
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.white,
+              ),
+            ),
             prefixIcon: Container(
               margin: EdgeInsets.only(top: 10),
               child: Wrap(
                 alignment: WrapAlignment.spaceEvenly,
                 children: [
-                  Icon(icon),
+                  Icon(icon, color: Colors.white),
                   Container(
                     height: 20,
                     width: 1,

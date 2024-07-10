@@ -17,13 +17,18 @@ class DefaulttextfieldOutlined extends StatelessWidget {
       height: 40,
       margin: margin,
       decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 0.5),
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
+          // color: Color.fromRGBO(255, 255, 255, 0.5),
+          // borderRadius: BorderRadius.only(
+          //     topLeft: Radius.circular(15), bottomRight: Radius.circular(15))
+          ),
       child: TextFormField(
         decoration: InputDecoration(
-            label: Text(text),
+            label: Text(
+              text,
+              style: TextStyle(color: Colors.white),
+            ),
             // border: InputBorder.none,
+
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                     color: Color.fromARGB(255, 35, 161, 183),
@@ -31,19 +36,22 @@ class DefaulttextfieldOutlined extends StatelessWidget {
                         1)), //este se usa cuando el usuario selecciona el campo
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-              color: Color.fromARGB(255, 34, 101, 202),
+              // color: Color.fromARGB(255, 34, 101, 202),
+              color: Colors.white, //color del borde
               width: 1,
             )), //esta es la linea que se muestra de este color
             prefixIcon: Container(
+              //contenedor del icono
               margin: EdgeInsets.only(top: 10),
               child: Wrap(
                 alignment: WrapAlignment.spaceEvenly,
                 children: [
-                  Icon(icon),
+                  Icon(icon, color: Colors.white //color del icono
+                      ),
                   Container(
                     height: 20,
                     width: 1,
-                    color: Colors.grey,
+                    color: Colors.white,
                   )
                 ],
               ),

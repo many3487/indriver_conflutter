@@ -22,8 +22,8 @@ class RegisterContent extends StatelessWidget {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                Color.fromARGB(255, 14, 29, 166),
-                Color.fromARGB(255, 30, 112, 227),
+                Color.fromARGB(255, 12, 38, 145),
+                Color.fromARGB(255, 34, 156, 249),
               ])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start, //Horizontal
@@ -49,8 +49,8 @@ class RegisterContent extends StatelessWidget {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    const Color.fromARGB(255, 255, 255, 255),
-                    const Color.fromARGB(255, 154, 154, 154)
+                    Color.fromARGB(255, 14, 29, 166),
+                    Color.fromARGB(255, 30, 112, 227),
                   ])),
           child: Stack(
             children: [
@@ -149,12 +149,12 @@ class RegisterContent extends StatelessWidget {
   Widget _imageBackground(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter, //centrar un elemento
-      margin: EdgeInsets.only(bottom: 50),
+      margin: EdgeInsets.only(bottom: 45),
       child: Image.asset(
         'assets/img/destination.png',
         width: MediaQuery.of(context).size.width * 0.6,
         height: MediaQuery.of(context).size.height * 0.4,
-        opacity: AlwaysStoppedAnimation(0.1),
+        opacity: AlwaysStoppedAnimation(0.9),
       ),
     );
   }
