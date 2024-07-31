@@ -1,0 +1,28 @@
+normal mente para la creación de  un bloc se crea una carpera
+es aqui donde se tendrán las cases de los estados 
+
+para que el state funcione se debe descargar un paquete de dependencias
+llamado equatable este se descarga desde google
+en la pestaña de installing aqui se copia la dependencia y se pega en el 
+archivo pubspec.yaml
+
+esta librería nos sirve o es capaz de comparar objetos en el lenguaje de programación Dart 
+usando e operadot ==
+
+se pueden comparar objetos 
+
+luego de crear las variables se han de crear los eventos 
+
+
+esto se hace en el archivo LoginEvent.Dart
+
+
+y por ultimo se crea el archivo que trabajael bloc
+
+LoginBloc.Dart
+
+
+los dartState son las variables que van a cambiar
+
+los LoginEvent son los eventos del formulario inicializador del formulario y cuando cambien o el susuario  envie el formulario cuando se escribainformacion
+egistrar el evento o el estado en LoginBloc

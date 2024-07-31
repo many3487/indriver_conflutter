@@ -1,0 +1,23 @@
+Como se instalan dependencias en flutter
+
+se debe buscar el paquete en google
+en este caso se instalara flutter bloc
+
+se busca o se debe obtener el paquete en pub.dev
+https://pub.dev/packages/flutter_bloc
+
+para instalarlo podemos ir a la pestaña de installing, existen dos posibilidades 
+
+1- correr el comando 
+
+o la otra opción de instalación es 
+
+copiar lo que aparece en la instalacion  es decir esta parte:
+dependencies:
+  flutter_bloc: ^8.1.6
+
+esto se agrega en el pubspec.yaml
+
+en el readme aparecerá un ejemplo 
+pero es mejor ir al reposotorio de github, aqui aparecera
+el ejemplo  en example/lib/main.dart

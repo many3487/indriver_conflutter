@@ -85,7 +85,10 @@ class RegisterContent extends StatelessWidget {
                       margin: EdgeInsets.only(
                           left: 20, right: 20, top: 10, bottom: 10),
                     ),
-                    DefaultButtom(text: "Crear usuario"),
+                    DefaultButtom(
+                      text: "Crear usuario",
+                      onPressed: () {},
+                    ),
                     _separatorOr(),
                     _textIAlreadyHaveAccount(context)
                   ],

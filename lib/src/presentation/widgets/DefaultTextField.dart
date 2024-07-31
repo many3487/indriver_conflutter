@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 //aqui se reciben parametros para estos stales widgest en este caso, estos son los inputs
 class Defaulttextfield extends StatelessWidget {
   String text;
+  Function(String text)
+      onChanged; // recibe la función para algún texto que reciba y de esta manera capturar el dato en consola
   IconData icon;
   EdgeInsetsGeometry margin;
 
   Defaulttextfield(
       {required this.text,
       required this.icon,
+      required this.onChanged,
       this.margin = const EdgeInsets.only(bottom: 10, top: 10, left: 20)});
 
   @override
@@ -22,6 +25,9 @@ class Defaulttextfield extends StatelessWidget {
           //     topLeft: Radius.circular(15), bottomRight: Radius.circular(15))
           ),
       child: TextFormField(
+        onChanged: (text) {
+          onChanged(text);
+        },
         decoration: InputDecoration(
             label: Text(
               text,

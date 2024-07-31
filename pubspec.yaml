@@ -37,6 +37,7 @@ dependencies:
   #aqui se agregan las dependencias debe quedar en el mismo nivel que cuppertino ya que si no se deja de esta manera dará errores
   cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

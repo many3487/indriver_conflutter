@@ -1,97 +1,122 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:indriver_clone_flutter/src/presentation/page/authentication/login/bloc/LoginBloc.dart';
+import 'package:indriver_clone_flutter/src/presentation/page/authentication/login/bloc/LoginEvent.dart';
 import 'package:indriver_clone_flutter/src/presentation/widgets/DefaultButtom.dart';
 import 'package:indriver_clone_flutter/src/presentation/widgets/DefaultTextField.dart';
 
 class LoginContent extends StatelessWidget {
-  const LoginContent({super.key});
+  //paranetro loginbloc
+  LoginBloc? bloc;
+
+  LoginContent(this.bloc);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.only(left: 12),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  Color.fromARGB(255, 12, 38, 145),
-                  Color.fromARGB(255, 34, 156, 249),
-                ]),
+    return Form(
+      key: bloc?.state
+          .formkey, //aqui se especifica la variable que maneja el formulario coo este es opcional se debe poner el signo de pregúnta
+      child: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.only(left: 12),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color.fromARGB(255, 12, 38, 145),
+                    Color.fromARGB(255, 34, 156, 249),
+                  ]),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start, //horizontal
+              mainAxisAlignment: MainAxisAlignment.center, //vertical
+              children: [
+                _textLoginRotated(), //para que se haga el camboi se debe pasar el context
+                SizedBox(height: 50),
+                _textRegisterRotated(context),
+                SizedBox(height: 90)
+              ],
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, //horizontal
-            mainAxisAlignment: MainAxisAlignment.center, //vertical
-            children: [
-              _textLoginRotated(), //para que se haga el camboi se debe pasar el context
-              SizedBox(height: 50),
-              _textRegisterRotated(context),
-              SizedBox(height: 90)
-            ],
-          ),
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height,
-          // height: MediaQuery.of(context).size.height * 0.93,
-          // width: MediaQuery.of(context).size.width * 0.8,
-          margin: EdgeInsets.only(left: 60, bottom: 30),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  Color.fromARGB(255, 14, 29, 166),
-                  Color.fromARGB(255, 30, 112, 227),
-                ]),
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35), bottomLeft: Radius.circular(35)),
-          ),
-          child: Container(
-            margin: EdgeInsets.only(
-                top: 0, bottom: 0, left: 15, right: 15), //margen
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment
-                    .start, //ubica los elementos en la parte izquierda
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  _textWelcome("Welcome"),
-                  _textWelcome("Back..."),
-                  _imageCar(),
-                  _textLogin(),
-                  Defaulttextfield(text: "Email", icon: Icons.email),
-                  Defaulttextfield(
+          Container(
+            height: MediaQuery.of(context).size.height,
+            // height: MediaQuery.of(context).size.height * 0.93,
+            // width: MediaQuery.of(context).size.width * 0.8,
+            margin: EdgeInsets.only(left: 60, bottom: 30),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color.fromARGB(255, 14, 29, 166),
+                    Color.fromARGB(255, 30, 112, 227),
+                  ]),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(35),
+                  bottomLeft: Radius.circular(35)),
+            ),
+            child: Container(
+              margin: EdgeInsets.only(
+                  top: 0, bottom: 0, left: 15, right: 15), //margen
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment
+                      .start, //ubica los elementos en la parte izquierda
+                  children: [
+                    SizedBox(
+                      height: 30,
+                    ),
+                    _textWelcome("Welcome"),
+                    _textWelcome("Back..."),
+                    _imageCar(),
+                    _textLogin(),
+                    Defaulttextfield(
+                      text: "Email",
+                      icon: Icons.email,
+                      onChanged: (text) {
+                        bloc?.add(EmailChanged(email: text));
+                      }, // aqui se registra el email con el texto que va a recibir
+                    ), // aqui se pasan los onChanged
+                    Defaulttextfield(
+                      onChanged: (text) {
+                        bloc?.add(PasswordChanged(
+                            password:
+                                text)); // aqui se registra el password con el texto que va a recibir
+                      },
                       text: "Password",
                       icon: Icons.lock,
                       margin: EdgeInsets.only(
-                          top: 0, left: 20, right: 0, bottom: 0)),
-                  // Spacer(), //lleva todo a la parte de abajo// nunca usar un Spacer su se va a usar un SingleChildScrollView ya qeu sse genera un bucle infinito
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.05,
-                  ),
-                  DefaultButtom(
-                    text: "SING IN",
-                    textColor: Colors.cyan,
-                  ),
-                  _sepadatorOr(),
-                  SizedBox(height: 10),
-                  _textDontHaveAccount(context),
-                  SizedBox(
-                    height: 5,
-                  )
-                ],
+                          top: 0, left: 20, right: 0, bottom: 0),
+                    ),
+                    // Spacer(), //lleva todo a la parte de abajo// nunca usar un Spacer su se va a usar un SingleChildScrollView ya qeu sse genera un bucle infinito
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                    ),
+                    DefaultButtom(
+                      text: "SING IN",
+                      textColor: Colors.cyan,
+                      onPressed: () {
+                        bloc?.add(FormSubmit());
+                      },
+                    ),
+                    _sepadatorOr(),
+                    SizedBox(height: 10),
+                    _textDontHaveAccount(context),
+                    SizedBox(
+                      height: 5,
+                    )
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
